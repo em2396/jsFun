@@ -20,42 +20,40 @@ const { dinosaurs, humans, movies } = require('./datasets/dinosaurs');
 
 // DATASET: kitties from ./datasets/kitties
 const kittyPrompts = {
-  orangePetNames() {
+  orangePetNames(animals) {
     // Return an array of just the names of kitties who are orange e.g.
         // ['Tiger', 'Snickers']
-
-        /* CODE GOES HERE */
-
+      const filterAnimal = animals.filter(babyAnimal => {
+        return babyAnimal.color === 'orange';
+      })
+      const orangeArray = filterAnimal.map(babyAnimal => {
+        return babyAnimal.name;
+      });
+      return orangeArray;
     // Annotation:
     // Write your annotation here as a comment
   },
 
-  sortByAge() {
-    // Sort the kitties by their age
-
-    /* CODE GOES HERE */
-
-    // Annotation:
-    // Write your annotation here as a comment
+  sortByAge(animals) {
+    return animals.sort((a, b) => {
+      return b.age - a.age
+    })
+    //a and b represent the object values to compare, so using dot notation on them will narrow the objects values to their age. 
   },
 
-  growUp() {
-    // Return an array of kitties who have all grown up by 2 years e.g.
-    // [{
-    //   name: 'Felicia',
-    //   age: 4,
-    //   color: 'grey'
-    // },
-    // {
-    //   name: 'Tiger',
-    //   age: 7,
-    //   color: 'orange'
-    // },
-    // ...etc]
-
-    /* CODE GOES HERE */
+  growUp(animals) {
+  //increment the age of all kitties by two years and return new array
+  //forEach is not chainable
+    const newAnimalsAge =  animals.map((x) => {
+      x.age += 2;
+      return x;
+    })
+    return newAnimalsAge;
   }
+
 };
+
+    /* CODE GOES HERE */
 
 // PLEASE READ-----------------------
 // Currently, your functions are probably using the `kitties` global import variable.
